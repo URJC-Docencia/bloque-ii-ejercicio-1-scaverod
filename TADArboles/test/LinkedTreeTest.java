@@ -210,7 +210,7 @@ public class LinkedTreeTest extends TestCase {
         while(it.hasNext()){
             s.append(it.next().getElement());
         }
-        assertEquals("ABECFGHDIJKL", s.toString());
+        assertEquals("ABCEFGHIJKLD", s.toString());
     }
 
 

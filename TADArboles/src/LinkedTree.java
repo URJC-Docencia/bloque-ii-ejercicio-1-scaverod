@@ -280,32 +280,67 @@ public class LinkedTree<E> extends DrawableTree<E> {
     }
 
 
-
     @Override
     public Iterator<Position<E>> iterator() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (isEmpty()) {
+            // empty iterator
+            return new ArrayList<Position<E>>().iterator();
+        }
+        List<Position<E>> positions = new ArrayList<>();
+        breadthFirstTraversal(root, positions);
+        return positions.iterator();
     }
 
 
     public Iterator<Position<E>> iteratorPreOrder() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (isEmpty()) {
+            // empty iterator
+            return new ArrayList<Position<E>>().iterator();
+        }
+        List<Position<E>> positions = new ArrayList<>();
+        preOrderTraversal(root, positions);
+        return positions.iterator();
     }
 
 
     public Iterator<Position<E>> iteratorPostOrder() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (isEmpty()) {
+            // empty iterator
+            return new ArrayList<Position<E>>().iterator();
+        }
+        List<Position<E>> positions = new ArrayList<>();
+        postOrderTraversal(root, positions);
+        return positions.iterator();
     }
 
-    private void breadthFirstTraversal(TreeNode<E> root, List<Position<E>> positions) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    private void breadthFirstTraversal(TreeNode<E> node, List<Position<E>> positions) {
+        if (node != null) {
+            List<TreeNode<E>> queue = new ArrayList<>();
+            queue.add(node);
+            while (!queue.isEmpty()) {
+                TreeNode<E> nodeToVisit = queue.remove(0);
+                positions.add(nodeToVisit);
+                queue.addAll(nodeToVisit.getChildren());
+            }
+        }
     }
 
-    private void postOrderTraversal(TreeNode<E> root, List<Position<E>> positions) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    private void postOrderTraversal(TreeNode<E> node, List<Position<E>> positions) {
+        if (node != null) {
+            for (TreeNode<E> child : node.getChildren()) {
+                postOrderTraversal(child, positions);
+            }
+            positions.add(node);
+        }
     }
 
     private void preOrderTraversal(TreeNode<E> node, List<Position<E>> positions) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (node != null) {
+            positions.add(node);
+            for (TreeNode<E> child : node.getChildren()) {
+                preOrderTraversal(child, positions);
+            }
+        }
     }
 
     /**

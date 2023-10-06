@@ -389,6 +389,15 @@ var node = checkPosition(v);
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    public Iterator<Position<E>> iteratorPreOrder() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+
+    public Iterator<Position<E>> iteratorPostOrder() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
     private void breadthFirstTraversal(LCRSnode<E> root, List<Position<E>> positions) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
